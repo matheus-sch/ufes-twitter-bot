@@ -1,0 +1,15 @@
+{
+  "name": "im-art",
+  "version": "1.0.0",
+  "description": "Twitter's API handler",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "Matheus Schreiber",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "twit": "^2.2.11"
+  }
+}
