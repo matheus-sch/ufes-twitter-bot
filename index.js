@@ -32,7 +32,7 @@ function postit() {
     if (!deFerias){
         if (!tempo) {
             deFerias = true
-            formatado = "Preparem o hidromel🍺\ne encham vossas artérias💉\npois este bot veio avisar📢\nque a UFES entrou de férias! 🏖"
+            formatado = "Um semestre de muito pranto 😭\nO desespero de longe se sentia 💨\nEu venho aqui no entanto 🤔\nTrazer de volta as férias e a alegria 🥳"
             feriasbot.post(
                 'statuses/update', 
                 {status: formatado},
