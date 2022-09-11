@@ -16,9 +16,9 @@ const feriasbot = new Twit({
 
 //função para o calculo do tempo ate as ferias (aqui é setada a data)
 function calculaTempoRestante(dev=false){
-    //Conferir sempre a data inserida (o mês começa no 0)
-    let fimSemestre = new Date(2022, 7, 18)
-    if (!dev) console.log("Data configurada para as férias: " + fimSemestre)
+    //Conferir sempre a data inserida (o mês começa no 0) YY/MM/DD
+    let fimSemestre = new Date(2022, 11, 24)
+    if (!dev) console.log("Data configurada para as férias: " + fimSemestre.toLocaleString())
     let atual = Date.now()
     let tempoRestante = Math.ceil((fimSemestre-atual)/86400000)
     if (!dev) console.log("TEMPO: " + tempoRestante + " dias")
@@ -75,6 +75,7 @@ function horarioAgendado(horas, minutos){
     let horaFormatada = agora.getUTCHours() - 3
     if (horaFormatada<0) horaFormatada+=24
     if (horaFormatada == horas && agora.getUTCMinutes() == minutos && agora.getUTCSeconds() == 0) postit()
+    calculaTempoRestante()
     console.log(`${horaFormatada}:${agora.getUTCMinutes()}:${agora.getUTCSeconds()}`)
 }
 
