@@ -5,6 +5,16 @@
 var Twit = require("twit");
 require("dotenv").config();
 
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD
+  }
+});
+
 //importando variaveis de ambiente do Twitter Developer Section
 const feriasbot = new Twit({
     consumer_key: process.env.CONSUMER_KEY,  
@@ -74,7 +84,26 @@ function horarioAgendado(horas, minutos){
     let agora = new Date
     let horaFormatada = agora.getUTCHours() - 3
     if (horaFormatada<0) horaFormatada+=24
-    if (horaFormatada == horas && agora.getUTCMinutes() == minutos && agora.getUTCSeconds() == 0) postit()
+    if (horaFormatada == horas && agora.getUTCMinutes() == minutos && agora.getUTCSeconds() == 0){
+        try{
+            postit()
+        }catch(err){
+            transporter.sendMail({
+                from: process.env.EMAIL_USER,
+                to: process.env.EMAIL_USER,
+                subject: 'Ufes BOT Ferias Report',
+                text: `Erro encontrado no bot: ${err}`
+              }, function(error, info){
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+        }
+    }
+    
+    
     calculaTempoRestante()
     console.log(`${horaFormatada}:${agora.getUTCMinutes()}:${agora.getUTCSeconds()}`)
 }
