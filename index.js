@@ -27,7 +27,7 @@ const feriasbot = new Twit({
 //função para o calculo do tempo ate as ferias (aqui é setada a data)
 function calculaTempoRestante(dev=false){
     //Conferir sempre a data inserida (o mês começa no 0) YY/MM/DD
-    let fimSemestre = new Date(2022, 11, 24)
+    let fimSemestre = new Date(2023, 6, 21)
     if (!dev) console.log("Data configurada para as férias: " + fimSemestre.toLocaleString())
     let atual = Date.now()
     let tempoRestante = Math.ceil((fimSemestre-atual)/86400000)
@@ -42,8 +42,8 @@ function postit() {
     if (!deFerias){
         if (!tempo) {
             deFerias = true
-            formatado = "Um semestre de muito pranto 😭\nO desespero de longe se sentia 💨\nEu venho aqui no entanto 🤔\nTrazer de volta as férias e a alegria 🥳"
-            feriasbot.post(
+            formatado = "E ca estamos denovo a celebrar 🥳\nAs férias que todos esperavam 😪\nEntão não irei mais me alongar 🫡\nPois logo logo elas acabam 🥺"
+	        feriasbot.post(
                 'statuses/update', 
                 {status: formatado},
                 function(err, data, response) { 
@@ -104,15 +104,16 @@ function horarioAgendado(horas, minutos){
     }
     
     
-    calculaTempoRestante()
-    console.log(`${horaFormatada}:${agora.getUTCMinutes()}:${agora.getUTCSeconds()}`)
+    calculaTempoRestante(dev=true)
+    //console.log(`${horaFormatada}:${agora.getUTCMinutes()}:${agora.getUTCSeconds()}`)
 }
 
 let deFerias = false
 console.log("Iniciando o bot... Férias: " + deFerias)
+calculaTempoRestante(false)
+
 
 //Essa request serve para testar se o bot esta com as credenciais em dia, sem ter que postar nada
-
 feriasbot.get('search/tweets', { q: 'neymar', count: 1 }, function(err, data, response) {
     // let tweet = data
     // console.log('MESSAGE: '+tweet.text)
