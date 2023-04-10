@@ -7,7 +7,7 @@ app.get('/start', (req, res) => {
   startWorker();
   
   setInterval(() => {
-    res.write('\n'); 
+    res.send('\n'); 
   }, 1000);
 
 });
