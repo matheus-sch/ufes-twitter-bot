@@ -5,7 +5,11 @@ const app = express();
 
 app.get('/start', (req, res) => {
   startWorker();
-  res.send('Worker started');
+  
+  setInterval(() => {
+    res.write('\n'); 
+  }, 1000);
+
 });
 
 app.listen(3000, () => {
