@@ -87,7 +87,8 @@ function startWorker() {
         if (horaFormatada<0) horaFormatada+=24
         if (horaFormatada == horas && agora.getUTCMinutes() == minutos && agora.getUTCSeconds() == 0){
             try{
-                postit()
+                // postit()
+                return;
             }catch(err){
                 transporter.sendMail({
                     from: process.env.EMAIL_USER,
@@ -129,7 +130,7 @@ function startWorker() {
         // console.log(data)
     }) 
     
-    setInterval(()=>horarioAgendado(7,0), 1000);
+    setInterval(()=>horarioAgendado(10,50), 1000);
 }
 
 
