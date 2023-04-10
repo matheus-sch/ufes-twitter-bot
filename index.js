@@ -105,7 +105,7 @@ function horarioAgendado(horas, minutos){
     
     
     calculaTempoRestante(dev=true)
-    //console.log(`${horaFormatada}:${agora.getUTCMinutes()}:${agora.getUTCSeconds()}`)
+    console.log(`${horaFormatada}:${agora.getUTCMinutes()}:${agora.getUTCSeconds()}`)
 }
 
 let deFerias = false
