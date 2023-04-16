@@ -1,7 +1,7 @@
 name: worker
-on: 
-  schedule:
-    - cron: '* * * * *'
+on: workflow_dispatch
+#   schedule:
+#     - cron: '* * * * *'
 jobs:
   tweet:
     runs-on: ubuntu-latest
