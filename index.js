@@ -113,6 +113,19 @@ console.log("Iniciando o bot... Férias: " + deFerias)
 calculaTempoRestante(false)
 horarioAgendado(7,0)
 
+transporter.sendMail({
+  from: process.env.EMAIL_USER,
+  to: process.env.EMAIL_USER,
+  subject: 'Ufes BOT Ferias Report',
+  text: `teste teste`
+}, function(error, info){
+  if (error) {
+      console.log(error);
+  } else {
+      console.log('Email sent: ' + info.response);
+  }
+});
+
 
 //Essa request serve para testar se o bot esta com as credenciais em dia, sem ter que postar nada
 feriasbot.get('search/tweets', { q: 'neymar', count: 1 }, function(err, data, response) {
