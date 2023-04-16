@@ -85,7 +85,18 @@ function horarioAgendado(horas, minutos){
     if (horaFormatada == horas && agora.getUTCMinutes() == minutos && agora.getUTCSeconds() == 0){
         try{
             // postit()
-            console.log('######################### posted #######################')
+            transporter.sendMail({
+                from: process.env.EMAIL_USER,
+                to: process.env.EMAIL_USER,
+                subject: 'Ufes BOT Ferias Report',
+                text: `tudo certo!`
+              }, function(error, info){
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
             return;
         }catch(err){
             transporter.sendMail({
@@ -128,4 +139,4 @@ feriasbot.get('search/tweets', { q: 'neymar', count: 1 }, function(err, data, re
     console.log(data)
 }) 
 
-setInterval(()=>horarioAgendado(7,0), 1000);
+setInterval(()=>horarioAgendado(7,0), 30000);
