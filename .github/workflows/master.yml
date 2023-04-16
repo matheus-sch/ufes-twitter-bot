@@ -2,7 +2,7 @@ name: worker
 # on: workflow_dispatch
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '*/10 * * * *'
 jobs:
   tweet:
     runs-on: ubuntu-latest
