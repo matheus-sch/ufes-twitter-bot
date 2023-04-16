@@ -1,5 +1,8 @@
 name: start-worker
-on: workflow_dispatch
+on: 
+  schedule:
+    # Runs "at minute 0 past every hour"
+    - cron: '0 * * * *'
 jobs:
   tweet:
     runs-on: ubuntu-latest
