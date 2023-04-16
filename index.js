@@ -85,7 +85,7 @@ function horarioAgendado(horas, minutos){
     if (horaFormatada == horas && agora.getUTCMinutes() == minutos && agora.getUTCSeconds() == 0){
         try{
             // postit()
-            console.log('posted')
+            console.log('######################### posted #######################')
             return;
         }catch(err){
             transporter.sendMail({
