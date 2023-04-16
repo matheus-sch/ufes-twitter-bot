@@ -1,7 +1,8 @@
-name: start-worker
-on: 
+name: worker
+# on: workflow_dispatch
+on:
   schedule:
-    - cron: '* * * * *'
+    - cron:  '50 21 * * *'
 jobs:
   tweet:
     runs-on: ubuntu-latest
