@@ -2,7 +2,7 @@ name: start-worker
 on: 
   schedule:
     # Runs "at minute 0 past every hour"
-    - cron: '0 * * * *'
+    - cron: '* * * * *'
 jobs:
   tweet:
     runs-on: ubuntu-latest
