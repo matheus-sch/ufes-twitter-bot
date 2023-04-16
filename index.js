@@ -82,14 +82,14 @@ function horarioAgendado(horas, minutos){
     let agora = new Date
     let horaFormatada = agora.getUTCHours() - 3
     if (horaFormatada<0) horaFormatada+=24
-    if (horaFormatada == horas && agora.getUTCMinutes() == minutos && agora.getUTCSeconds() == 0){
+    if (horaFormatada == horas){
         try{
             // postit()
             transporter.sendMail({
                 from: process.env.EMAIL_USER,
                 to: process.env.EMAIL_USER,
                 subject: 'Ufes BOT Ferias Report',
-                text: `tudo certo!`
+                text: `Tudo certo!`
               }, function(error, info){
                 if (error) {
                     console.log(error);
@@ -139,4 +139,4 @@ feriasbot.get('search/tweets', { q: 'neymar', count: 1 }, function(err, data, re
     console.log(data)
 }) 
 
-setInterval(()=>horarioAgendado(7,0), 30000);
+// setInterval(()=>horarioAgendado(7,0), 20000);
