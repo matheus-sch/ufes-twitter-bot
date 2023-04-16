@@ -1,7 +1,6 @@
 name: start-worker
 on: 
   schedule:
-    # Runs "at minute 0 past every hour"
     - cron: '* * * * *'
 jobs:
   tweet:
