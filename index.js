@@ -80,7 +80,7 @@ function postit() {
 //função que fica em loop aguardando o horario da postagem
 function horarioAgendado(horas, minutos){
     let agora = new Date
-    let horaFormatada = agora.getUTCHours()
+    let horaFormatada = parseInt(d.toLocaleString('pt-BR', {hour: '2-digit', hour12: false, timeZone: 'America/Sao_paulo'}))
     if (horaFormatada<0) horaFormatada+=24
     if (horaFormatada == horas){
         try{
@@ -88,7 +88,7 @@ function horarioAgendado(horas, minutos){
             transporter.sendMail({
                 from: process.env.EMAIL_USER,
                 to: process.env.EMAIL_USER,
-                subject: 'Ufes BOT Ferias Report',
+                subject: `Ufes BOT Ferias Report (${agora}hrs)`,
                 text: `Tudo certo!`
               }, function(error, info){
                 if (error) {
@@ -124,6 +124,9 @@ let deFerias = false
 console.log("Iniciando o bot... Férias: " + deFerias)
 calculaTempoRestante(false)
 horarioAgendado(7,0)
+horarioAgendado(12,0)
+horarioAgendado(19,0)
+horarioAgendado(0,0)
 
 //Essa request serve para testar se o bot esta com as credenciais em dia, sem ter que postar nada
 feriasbot.get('search/tweets', { q: 'neymar', count: 1 }, function(err, data, response) {
