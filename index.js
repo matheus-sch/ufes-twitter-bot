@@ -80,7 +80,7 @@ function postit() {
 //função que fica em loop aguardando o horario da postagem
 function horarioAgendado(horas, minutos){
     let agora = new Date
-    let horaFormatada = parseInt(d.toLocaleString('pt-BR', {hour: '2-digit', hour12: false, timeZone: 'America/Sao_paulo'}))
+    let horaFormatada = parseInt(agora.toLocaleString('pt-BR', {hour: '2-digit', hour12: false, timeZone: 'America/Sao_paulo'}))
     if (horaFormatada<0) horaFormatada+=24
     if (horaFormatada == horas){
         try{
