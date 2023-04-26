@@ -80,7 +80,7 @@ function postit() {
 //função que fica em loop aguardando o horario da postagem
 function horarioAgendado(horas, minutos){
     let agora = new Date
-    let horaFormatada = agora.getUTCHours() - 3
+    let horaFormatada = agora.getUTCHours()
     if (horaFormatada<0) horaFormatada+=24
     if (horaFormatada == horas){
         try{
@@ -97,6 +97,7 @@ function horarioAgendado(horas, minutos){
                     console.log('Email sent: ' + info.response);
                 }
             });
+            console.log('postei')
             return;
         }catch(err){
             transporter.sendMail({
