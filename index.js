@@ -81,23 +81,12 @@ function postit() {
 function horarioAgendado(horas, minutos){
     let agora = new Date
     let horaFormatada = parseInt(agora.toLocaleString('pt-BR', {hour: '2-digit', hour12: false, timeZone: 'America/Sao_paulo'}))
+    let minutoFormatado = parseInt(agora.toLocaleString('pt-BR', {minute: '2-digit'}))
+    let segundoFormatado = parseInt(agora.toLocaleString('pt-BR', {second: '2-digit'}))
     if (horaFormatada<0) horaFormatada+=24
-    if (horaFormatada == horas){
+    if (horaFormatada == horas && minutoFormatado==minutos && segundoFormatado==0 ){
         try{
-            // postit()
-            transporter.sendMail({
-                from: process.env.EMAIL_USER,
-                to: process.env.EMAIL_USER,
-                subject: `Ufes BOT Ferias Report (${agora}hrs)`,
-                text: `Tudo certo!`
-              }, function(error, info){
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log('Email sent: ' + info.response);
-                }
-            });
-            console.log('postei')
+            postit()
             return;
         }catch(err){
             transporter.sendMail({
@@ -117,16 +106,13 @@ function horarioAgendado(horas, minutos){
     
     
     calculaTempoRestante(dev=true)
-    console.log(`${horaFormatada}:${agora.getUTCMinutes()}:${agora.getUTCSeconds()}`)
+    // console.log(`${horaFormatada}:${minutoFormatado}:${segundoFormatado}`)
 }
 
 let deFerias = false
 console.log("Iniciando o bot... Férias: " + deFerias)
 calculaTempoRestante(false)
-horarioAgendado(7,0)
-horarioAgendado(12,0)
-horarioAgendado(19,0)
-horarioAgendado(0,0)
+
 
 //Essa request serve para testar se o bot esta com as credenciais em dia, sem ter que postar nada
 feriasbot.get('search/tweets', { q: 'neymar', count: 1 }, function(err, data, response) {
@@ -140,7 +126,9 @@ feriasbot.get('search/tweets', { q: 'neymar', count: 1 }, function(err, data, re
     // console.log(`https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}\n`)
     if (!data.errors) console.log("CREDENCIAIS AUTENTICADAS COM SUCESSO")
     else console.log("ERRO!! ATUALIZE AS CREDENCIAIS!")
-    console.log(data)
+    // console.log(data)
 }) 
 
-// setInterval(()=>horarioAgendado(7,0), 20000);
+setInterval(()=>{
+    horarioAgendado(7,0)
+}, 1000);
