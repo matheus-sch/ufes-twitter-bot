@@ -106,7 +106,7 @@ function horarioAgendado(horas, minutos){
     
     
     calculaTempoRestante(dev=true)
-    // console.log(`${horaFormatada}:${minutoFormatado}:${segundoFormatado}`)
+    console.log(`${horaFormatada}:${minutoFormatado}:${segundoFormatado}`)
 }
 
 let deFerias = false
@@ -126,7 +126,7 @@ feriasbot.get('search/tweets', { q: 'neymar', count: 1 }, function(err, data, re
     // console.log(`https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}\n`)
     if (!data.errors) console.log("CREDENCIAIS AUTENTICADAS COM SUCESSO")
     else console.log("ERRO!! ATUALIZE AS CREDENCIAIS!")
-    // console.log(data)
+    // console.log(data)CREDENCIAIS AUTENTICADAS COM SUCESSO
 }) 
 
 setInterval(()=>{
