@@ -4,7 +4,7 @@
   "description": "Twitter's API handler",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "author": "Matheus Schreiber",
   "license": "ISC",
