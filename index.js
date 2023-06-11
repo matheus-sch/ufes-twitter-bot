@@ -86,7 +86,7 @@ function horarioAgendado(horas, minutos){
     if (horaFormatada<0) horaFormatada+=24
     if (horaFormatada == horas && minutoFormatado==minutos && segundoFormatado==0 ){
         try{
-            // postit()
+            postit()
             return;
         }catch(err){
             transporter.sendMail({
