@@ -106,7 +106,7 @@ function horarioAgendado(horas, minutos){
     
     
     calculaTempoRestante(dev=true)
-    console.log(`${horaFormatada}:${minutoFormatado}:${segundoFormatado}`)
+    if (segundoFormatado==0) console.log(`${horaFormatada}:${minutoFormatado}:${segundoFormatado}`)
 }
 
 let deFerias = false
